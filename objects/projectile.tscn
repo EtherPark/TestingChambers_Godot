@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bppnvcx8yjpxt"]
+
+[ext_resource type="Script" uid="uid://bukk4j1wnqgvw" path="res://objects/Projectile.cs" id="1_ibous"]
+[ext_resource type="Texture2D" uid="uid://cp6ot8knqlext" path="res://sprites/bullet.png" id="1_x17f1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibous"]
+radius = 33.06055
+
+[node name="Projectile" type="Area2D" unique_id=810287671]
+collision_layer = 4
+script = ExtResource("1_ibous")
+Speed = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1017272803]
+texture = ExtResource("1_x17f1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1292160906]
+shape = SubResource("CircleShape2D_ibous")

@@ -1,0 +1,27 @@
+[gd_scene format=4 uid="uid://kvs7xffp3juk"]
+
+[ext_resource type="PackedScene" uid="uid://bi6e5xftqatvg" path="res://objects/character_body_2d.tscn" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://cwsqooovlm52u" path="res://icon.svg" id="2_fj7yv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
+texture = ExtResource("2_fj7yv")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/modulate = Color(0.074868925, 0.6145811, 0.5122122, 1)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_tlwt5"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_fj7yv")
+
+[node name="World" type="Node2D" unique_id=1736268332]
+
+[node name="Player" parent="." unique_id=410521718 instance=ExtResource("1_f3sb7")]
+collision_mask = 3
+
+[node name="PlayerCam" type="Camera2D" parent="Player" unique_id=1605298055]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1646299841]
+tile_map_data = PackedByteArray("AAD8/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAAAAQAAAAAAAAAFAP//AQAAAAAAAAAFAP7/AQAAAAAAAAAFAP3/AQAAAAAAAAAFAPz/AQAAAAAAAAAEAPz/AQAAAAAAAAADAPz/AQAAAAAAAAACAPz/AQAAAAAAAAABAPz/AQAAAAAAAAAAAPz/AQAAAAAAAAD///z/AQAAAAAAAAD+//z/AQAAAAAAAAD9//z/AQAAAAAAAAD8//z/AQAAAAAAAAD7//z/AQAAAAAAAAD6//z/AQAAAAAAAAD6//3/AQAAAAAAAAD6//7/AQAAAAAAAAD6////AQAAAAAAAAD6/wAAAQAAAAAAAAD6/wEAAQAAAAAAAAD6/wIAAQAAAAAAAAD6/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_tlwt5")

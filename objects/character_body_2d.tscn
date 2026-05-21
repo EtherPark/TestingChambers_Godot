@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bi6e5xftqatvg"]
+
+[ext_resource type="Script" uid="uid://dmgdw614pr5c6" path="res://objects/CharacterBody2d.cs" id="1_posfq"]
+[ext_resource type="PackedScene" uid="uid://bppnvcx8yjpxt" path="res://objects/projectile.tscn" id="2_8h5ha"]
+[ext_resource type="Texture2D" uid="uid://cwsqooovlm52u" path="res://icon.svg" id="2_71sds"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_posfq"]
+size = Vector2(126, 126)
+
+[node name="Player" type="CharacterBody2D" unique_id=410521718 node_paths=PackedStringArray("Blaster")]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_posfq")
+Blaster = NodePath("Blaster")
+ProjectileScn = ExtResource("2_8h5ha")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=136989200]
+texture = ExtResource("2_71sds")
+
+[node name="playerBody" type="CollisionShape2D" parent="." unique_id=2089834103]
+shape = SubResource("RectangleShape2D_posfq")
+
+[node name="Blaster" type="Node2D" parent="." unique_id=605967758]
