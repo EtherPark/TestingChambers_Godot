@@ -25,6 +25,7 @@ public partial class CharacterBody2d : CharacterBody2D
 	}
 
 // This calls when you press LMB
+// it creates the projectile object within the "world" tree
     public override void _Input(InputEvent @event)
 	{
 		if(@event.IsActionPressed("click"))

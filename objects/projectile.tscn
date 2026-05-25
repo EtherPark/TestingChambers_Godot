@@ -6,10 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibous"]
 radius = 33.06055
 
-[node name="Projectile" type="Area2D" unique_id=810287671]
+[node name="Projectile" type="CharacterBody2D" unique_id=857741141]
 collision_layer = 4
+collision_mask = 9
 script = ExtResource("1_ibous")
-Speed = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1017272803]
 texture = ExtResource("1_x17f1")
