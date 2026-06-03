@@ -6,8 +6,8 @@ using System.Runtime.CompilerServices;
 public partial class DestructWall : TileMapLayer
 {
 	private const float HEALTH = 4f;
+	private Dictionary<Vector2I, float> _cellHP = new(); //dictionary = hash map
 
-	private Dictionary<Vector2I, float> _cellHP = new();
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -15,7 +15,7 @@ public partial class DestructWall : TileMapLayer
 
 	public override void _Process(double delta)
 	{
-		// .EraseCell you might use
+		
 	}
 
 	public void DamageToWall(Vector2I cellPos, float damage)
@@ -33,13 +33,13 @@ public partial class DestructWall : TileMapLayer
 			GD.Print(cellPos, " HP: ", _cellHP[cellPos]);
 		}
 		
-		if(_cellHP[cellPos] == 0)
+		if(_cellHP[cellPos] <= 0)
 		{
-			GD.Print("Trying: ", cellPos);
-			GD.Print("Before: ", GetCellSourceId(cellPos));
+			//GD.Print("Trying: ", cellPos);
+			//GD.Print("Before: ", GetCellSourceId(cellPos));
 			_cellHP.Remove(cellPos);
 			this.SetCell(cellPos, -1);
-			GD.Print("After: ", GetCellSourceId(cellPos));
+			//GD.Print("After: ", GetCellSourceId(cellPos));
 			return;
 		}
 	}

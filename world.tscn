@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bi6e5xftqatvg" path="res://objects/character_body_2d.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://cwsqooovlm52u" path="res://icon.svg" id="2_fj7yv"]
 [ext_resource type="Script" uid="uid://d3qmlby88w6rw" path="res://DestructWall.cs" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://c15ttsiwqpw7s" path="res://objects/power_shotgun.tscn" id="4_aqk2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
 texture = ExtResource("2_fj7yv")
@@ -44,3 +45,12 @@ tile_set = SubResource("TileSet_tlwt5")
 tile_map_data = PackedByteArray("AAABAPz/AAAAAAAAAAAAAPz/AAAAAAAAAAD///z/AAAAAAAAAAD+//z/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAPr/AAAAAAAAAAAFAPn/AAAAAAAAAAAFAPj/AAAAAAAAAAAFAPf/AAAAAAAAAAAJAPz/AAAAAAAAAAAKAPz/AAAAAAAAAAALAPz/AAAAAAAAAAAMAPz/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_036b0")
 script = ExtResource("3_tlwt5")
+
+[node name="Power_Shotgun" parent="." unique_id=1528076487 instance=ExtResource("4_aqk2v")]
+position = Vector2(-2, -894)
+
+[node name="Power_Shotgun2" parent="." unique_id=183440404 instance=ExtResource("4_aqk2v")]
+position = Vector2(1436, 15)
+
+[node name="Power_Shotgun3" parent="." unique_id=506154834 instance=ExtResource("4_aqk2v")]
+position = Vector2(1414, -864)

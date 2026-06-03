@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c15ttsiwqpw7s"]
+
+[ext_resource type="Script" uid="uid://77l4km2kva50" path="res://objects/PowerShotgun.cs" id="1_arxku"]
+[ext_resource type="Texture2D" uid="uid://v5ddl3al1q12" path="res://sprites/Power_Shotgun.png" id="1_lkkxo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_arxku"]
+radius = 50.01
+
+[node name="Power_Shotgun" type="Area2D" unique_id=1528076487]
+disable_mode = 1
+collision_layer = 16
+collision_mask = 2
+input_pickable = false
+script = ExtResource("1_arxku")
+
+[node name="PowerShotgun" type="Sprite2D" parent="." unique_id=1748297736]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_lkkxo")
+
+[node name="Orb" type="CollisionShape2D" parent="." unique_id=1308464629]
+shape = SubResource("CircleShape2D_arxku")

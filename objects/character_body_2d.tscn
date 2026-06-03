@@ -3,18 +3,19 @@
 [ext_resource type="Script" uid="uid://dmgdw614pr5c6" path="res://objects/CharacterBody2d.cs" id="1_posfq"]
 [ext_resource type="PackedScene" uid="uid://bppnvcx8yjpxt" path="res://objects/projectile.tscn" id="2_8h5ha"]
 [ext_resource type="Texture2D" uid="uid://cwsqooovlm52u" path="res://icon.svg" id="2_71sds"]
+[ext_resource type="Script" uid="uid://ceefstgdhy3ds" path="res://objects/Blaster.cs" id="4_8h5ha"]
+[ext_resource type="PackedScene" uid="uid://c15ttsiwqpw7s" path="res://objects/power_shotgun.tscn" id="5_8mfej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_posfq"]
 size = Vector2(126, 126)
 
 [node name="Player" type="CharacterBody2D" unique_id=410521718 node_paths=PackedStringArray("Blaster")]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 19
 motion_mode = 1
 slide_on_ceiling = false
 script = ExtResource("1_posfq")
 Blaster = NodePath("Blaster")
-ProjectileScn = ExtResource("2_8h5ha")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=136989200]
 texture = ExtResource("2_71sds")
@@ -23,3 +24,6 @@ texture = ExtResource("2_71sds")
 shape = SubResource("RectangleShape2D_posfq")
 
 [node name="Blaster" type="Node2D" parent="." unique_id=605967758]
+script = ExtResource("4_8h5ha")
+ProjectileScn = ExtResource("2_8h5ha")
+PowerShotgunScn = ExtResource("5_8mfej")

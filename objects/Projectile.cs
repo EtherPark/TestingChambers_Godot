@@ -6,7 +6,7 @@ public partial class Projectile : CharacterBody2D
 	[Export]
 	public float Flight = 2000f;
 	public float Lifetime = 1f;
-	public float Damage = 1f;
+	public float Damage = 0f;
 	private Vector2 Direction;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -37,5 +37,10 @@ public partial class Projectile : CharacterBody2D
 	public void setDirection(Vector2 direction)
 	{
 		Direction = direction;
+	}
+
+	public void setDamage(float damage)
+	{
+		Damage = damage;
 	}
 }
