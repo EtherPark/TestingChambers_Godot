@@ -4,19 +4,20 @@ using System;
 public partial class Projectile : CharacterBody2D
 {
 	[Export]
-	public float Flight = 2000f;
-	public float Lifetime = 1f;
-	public float Damage = 0f;
+	private float Speed = 0f;
+	private float Lifetime = 1f;
+	private float Damage = 0f;
 	private Vector2 Direction;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+
 		GetTree().CreateTimer(Lifetime).Timeout += QueueFree;
 	}
 
 	public override void _Process(double delta)
 	{
-		Vector2 Vel = Direction * Flight;
+		Vector2 Vel = Direction * Speed;
 		KinematicCollision2D collision = MoveAndCollide(Vel * (float)delta);
 		if(collision != null)
 		{
@@ -42,5 +43,10 @@ public partial class Projectile : CharacterBody2D
 	public void setDamage(float damage)
 	{
 		Damage = damage;
+	}
+
+	public void setSpeed(float flightSpeed)
+	{
+		Speed = flightSpeed;
 	}
 }

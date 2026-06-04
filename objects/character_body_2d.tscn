@@ -11,7 +11,7 @@ size = Vector2(126, 126)
 
 [node name="Player" type="CharacterBody2D" unique_id=410521718 node_paths=PackedStringArray("Blaster")]
 collision_layer = 2
-collision_mask = 19
+collision_mask = 51
 motion_mode = 1
 slide_on_ceiling = false
 script = ExtResource("1_posfq")

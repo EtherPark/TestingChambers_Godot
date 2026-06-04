@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 public partial class DestructWall : TileMapLayer
 {
-	private const float HEALTH = 4f;
+	private const float HEALTH = 5f;
 	private Dictionary<Vector2I, float> _cellHP = new(); //dictionary = hash map
 
 	// Called when the node enters the scene tree for the first time.
@@ -23,11 +23,10 @@ public partial class DestructWall : TileMapLayer
 		if(!_cellHP.ContainsKey(cellPos))
 		{
 			_cellHP[cellPos] = HEALTH;
+			_cellHP[cellPos] -= damage;
 			GD.Print(cellPos, " HP: ", _cellHP[cellPos]);
-			return;
 		}
-		
-		if(_cellHP[cellPos] > 0)
+		else if(_cellHP[cellPos] > 0)
 		{
 			_cellHP[cellPos] -= damage;
 			GD.Print(cellPos, " HP: ", _cellHP[cellPos]);

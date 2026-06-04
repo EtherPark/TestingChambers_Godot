@@ -3,21 +3,24 @@ using System;
 
 public partial class Blaster : Node2D
 {
-	//--- object properties ---// 
+	//--- object properties ---//
 	[Export]
-	public int shotCount = 1; //almost exclusive to spreadshot attributes
+	private float flightSpeed = 2000f;
+	private float flight_MAX = 5000f;
+	[Export]
+	private int shotCount = 1;
 	private const int shotCount_MIN = 1;
 	private const int shotCount_MAX = 15;
 	[Export]
-	public float Damage = 1f;
+	private float Damage = 1f;
 	private const float Damage_MIN = 0.5f;
 	private const float Damage_MAX = 999f;
 	[Export]
-	public float Spread = 0f; // the number represents degrees => Mathf.DegToRad(...) when needed
+	private float Spread = 0f; // the number represents degrees => Mathf.DegToRad(...) when needed
 	private const float Spread_MIN = 0f;
 	private const float Spread_MAX = 100f;
 	[Export]
-	public float Rof = 0.2f; //Rate of fire, adjustments should be multiplicative
+	private float Rof = 0.2f; //Rate of fire, adjustments should be multiplicative
 	private const float Rof_MAX = 0.01f;
 
 	private float fireCooldown = 0f; //timer between shoot() func calls
@@ -27,15 +30,19 @@ public partial class Blaster : Node2D
 	//--- packed scenes ---//
 	[Export]
 	public PackedScene ProjectileScn { get; private set; }
+	/*
 	[Export]
 	public PackedScene PowerShotgunScn { get; private set; }
+	*/
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		/*
 		PowerShotgun shotgun = PowerShotgunScn.Instantiate<PowerShotgun>();
 		shotgun.GlobalPosition += new Vector2(-300,0);
 		GetTree().CurrentScene.CallDeferred(Node.MethodName.AddChild, shotgun);
+		*/
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,12 +73,14 @@ public partial class Blaster : Node2D
 
 	private void shoot()
 	{
-		Projectile projectile = ProjectileScn.Instantiate<Projectile>();
-		projectile.setDamage(Damage);
 		Vector2 projectileDirect = GlobalPosition.DirectionTo(GetGlobalMousePosition());
 
 		if(!isSpreadshot)
 		{
+			Projectile projectile = ProjectileScn.Instantiate<Projectile>();
+			projectile.setDamage(Damage);
+			projectile.setSpeed(flightSpeed);
+
 			projectile.GlobalPosition = GlobalPosition;
 			projectile.setDirection(projectileDirect);
 
@@ -103,6 +112,7 @@ public partial class Blaster : Node2D
 	{
 		Projectile projectile = ProjectileScn.Instantiate<Projectile>();
 		projectile.setDamage(Damage);
+		projectile.setSpeed(flightSpeed);
 
 		projectile.GlobalPosition = GlobalPosition;
 		projectile.setDirection(direction);
@@ -113,13 +123,13 @@ public partial class Blaster : Node2D
 // called when the ApplyShotgun signal is recieved
 	public void OnPickupShotgun(float newDanage, float newRof, int addedShots, float newSpread)
 	{
+		isSpreadshot = true;
+
 		Damage += newDanage;
 		if(Damage > Damage_MAX)
 			Damage = Damage_MAX;
 		
 		Rof *= newRof;
-		if(Rof < Rof_MAX)
-			Rof = Rof_MAX;
 
 		shotCount += addedShots;
 		if(shotCount > shotCount_MAX)
@@ -128,10 +138,48 @@ public partial class Blaster : Node2D
 		Spread += newSpread;
 		if(Spread > Spread_MAX)
 			Spread = Spread_MAX;
+	}
 
-		if(shotCount > 1)
+	public void OnPickupMachinegun(float newDamage, float newRof, int adjustShots)
+	{
+		Damage += newDamage;
+		if(Damage < Damage_MIN)
+			Damage = Damage_MIN;
+
+		Rof *= newRof;
+		if(Rof < Rof_MAX)
+			Rof = Rof_MAX;
+
+		shotCount += adjustShots;
+		if(shotCount <= shotCount_MIN)
 		{
-			isSpreadshot = true;
+			shotCount = shotCount_MIN;
+			isSpreadshot = false;
+		}
+
+	}
+
+	public void OnPickupSniper(float newDamage, float newRof, float newSpread, float newSpeed, int adjustShots)
+	{
+		Damage += newDamage;
+		if(Damage > Damage_MAX)
+			Damage = Damage_MAX;
+
+		Rof *= newRof;
+		
+		Spread += newSpread;
+		if(Spread < Spread_MIN)
+			Spread = Spread_MIN;
+		
+		flightSpeed += newSpeed;
+		if(flightSpeed > flight_MAX)
+			flightSpeed = flight_MAX;
+
+		shotCount += adjustShots;
+		if(shotCount <= shotCount_MIN)
+		{
+			shotCount = shotCount_MIN;
+			isSpreadshot = false;
 		}
 	}
 }

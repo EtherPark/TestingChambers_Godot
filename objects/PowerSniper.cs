@@ -1,16 +1,14 @@
 using Godot;
 using System;
-using System.ComponentModel;
 
-public partial class PowerShotgun : Area2D
+public partial class PowerSniper : Area2D
 {
 	[Signal]
-	public delegate void ApplyShotgunEventHandler(float newDamage, float newRof, int addedShots, float newSpread);
-	
+	public delegate void ApplySniperEventHandler(float newDamage, float newRof, float newSpread, float newSpeed, int adjustShots);
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		BodyEntered += OnPlayerEntered;
+		BodyEntered += OnBodyEntered;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,13 +16,13 @@ public partial class PowerShotgun : Area2D
 	{
 	}
 
-	private void OnPlayerEntered(Node2D body)
+	public void OnBodyEntered(Node2D body)
 	{
 		if(body is CharacterBody2d player)
 		{
 			Blaster gun = player.GetNode<Blaster>("Blaster");
-			ApplyShotgun += gun.OnPickupShotgun;
-			EmitSignal(SignalName.ApplyShotgun, 0.5f, 1.5f, 2, 30f);
+			ApplySniper += gun.OnPickupSniper;
+			EmitSignal(SignalName.ApplySniper, 3f, 2.1f, -25f, 500f, -2);
 			QueueFree();
 		}
 	}

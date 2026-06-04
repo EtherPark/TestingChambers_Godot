@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://q1c5qdrgqg00"]
+
+[ext_resource type="Script" uid="uid://dqtocsu4q02ab" path="res://objects/PowerMachinegun.cs" id="1_a0fxh"]
+[ext_resource type="Texture2D" uid="uid://bx0842co3teue" path="res://sprites/Power_Machinegun.png" id="1_sgqu2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0fxh"]
+radius = 47.095646
+
+[node name="Power_Machinegun" type="Area2D" unique_id=1535838672]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_a0fxh")
+
+[node name="PowerMachinegun" type="Sprite2D" parent="." unique_id=629846731]
+texture = ExtResource("1_sgqu2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877545583]
+shape = SubResource("CircleShape2D_a0fxh")

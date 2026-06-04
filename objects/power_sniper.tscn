@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://kfpugq0vck7r"]
+
+[ext_resource type="Script" uid="uid://bsva8l4rvrl7c" path="res://objects/PowerSniper.cs" id="1_ccj4y"]
+[ext_resource type="Texture2D" uid="uid://j8b3sw5g1t7q" path="res://sprites/Power_Sniper.png" id="1_p8gvp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccj4y"]
+radius = 47.095646
+
+[node name="Power_Sniper" type="Area2D" unique_id=1285163443]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_ccj4y")
+
+[node name="PowerSniper" type="Sprite2D" parent="." unique_id=1274840009]
+position = Vector2(0, -2)
+texture = ExtResource("1_p8gvp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1818989486]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_ccj4y")

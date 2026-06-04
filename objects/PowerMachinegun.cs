@@ -1,12 +1,11 @@
 using Godot;
 using System;
-using System.ComponentModel;
 
-public partial class PowerShotgun : Area2D
+public partial class PowerMachinegun : Area2D
 {
 	[Signal]
-	public delegate void ApplyShotgunEventHandler(float newDamage, float newRof, int addedShots, float newSpread);
-	
+	public delegate void ApplyMachinegunEventHandler(float newDamage, float newRof, int adjustShots);
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -23,8 +22,8 @@ public partial class PowerShotgun : Area2D
 		if(body is CharacterBody2d player)
 		{
 			Blaster gun = player.GetNode<Blaster>("Blaster");
-			ApplyShotgun += gun.OnPickupShotgun;
-			EmitSignal(SignalName.ApplyShotgun, 0.5f, 1.5f, 2, 30f);
+			ApplyMachinegun += gun.OnPickupMachinegun;
+			EmitSignal(SignalName.ApplyMachinegun, -0.25f, 0.75f, -1);
 			QueueFree();
 		}
 	}
