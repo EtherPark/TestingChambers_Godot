@@ -5,9 +5,8 @@ using System;
 //player just called character body node but with a lowercase d (teehee)
 public partial class CharacterBody2d : CharacterBody2D
 {
-	[Export]
+	[Export] private float Speed = 750f;
 	public Node2D Blaster { get; private set; }
-	public float Speed = 750f;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -22,5 +21,7 @@ public partial class CharacterBody2d : CharacterBody2D
 		Velocity = inputDirect * Speed;
 
 		MoveAndSlide();
+
+		
 	}
 }

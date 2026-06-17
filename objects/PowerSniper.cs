@@ -22,7 +22,7 @@ public partial class PowerSniper : Area2D
 		{
 			Blaster gun = player.GetNode<Blaster>("Blaster");
 			ApplySniper += gun.OnPickupSniper;
-			EmitSignal(SignalName.ApplySniper, 3f, 2.1f, -25f, 500f, -2);
+			EmitSignal(SignalName.ApplySniper, 3f, 2.1f, -40f, 500f, -2);
 			QueueFree();
 		}
 	}

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://by8mqhb0f883y"]
+
+[ext_resource type="Script" uid="uid://betk3a6j2tiwb" path="res://objects/Enemy.cs" id="1_7jlpp"]
+[ext_resource type="Texture2D" uid="uid://cwsqooovlm52u" path="res://icon.svg" id="1_882u1"]
+[ext_resource type="Script" uid="uid://btaed604f7ifp" path="res://states/StateMachine.cs" id="3_3hb37"]
+[ext_resource type="Script" uid="uid://dbqjno5cp62ph" path="res://objects/WanderState.cs" id="4_we7g8"]
+[ext_resource type="Script" uid="uid://cl0luqrx5ri22" path="res://objects/IdleState.cs" id="5_2ld5k"]
+[ext_resource type="Script" uid="uid://1dc2kwvn0ria" path="res://objects/Vision.cs" id="5_3hb37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jlpp"]
+size = Vector2(120, 120)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_we7g8"]
+radius = 363.0124
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1368799035]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_7jlpp")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=4719838]
+modulate = Color(1, 0.53333336, 0, 1)
+texture = ExtResource("1_882u1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1595525870]
+visible = false
+shape = SubResource("RectangleShape2D_7jlpp")
+
+[node name="State Machine" type="Node" parent="." unique_id=1139350106]
+script = ExtResource("3_3hb37")
+initialState = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="State Machine" unique_id=1156203580]
+script = ExtResource("4_we7g8")
+
+[node name="Walk Time" type="Timer" parent="State Machine/Wander" unique_id=1595193114]
+wait_time = 1.5
+
+[node name="Idle" type="Node" parent="State Machine" unique_id=440633751]
+script = ExtResource("5_2ld5k")
+
+[node name="Rest Time" type="Timer" parent="State Machine/Idle" unique_id=2025996477]
+wait_time = 2.4
+
+[node name="Shooting" type="Node" parent="State Machine" unique_id=1524740883]
+
+[node name="Evade" type="Node" parent="State Machine" unique_id=1215564418]
+
+[node name="Vision" type="Area2D" parent="." unique_id=824076902]
+script = ExtResource("5_3hb37")
+
+[node name="Vision Collision" type="CollisionShape2D" parent="Vision" unique_id=159827541]
+shape = SubResource("CircleShape2D_we7g8")
+debug_color = Color(0, 0.49019608, 0.105882354, 0.21568628)

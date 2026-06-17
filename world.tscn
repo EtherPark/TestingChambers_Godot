@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c15ttsiwqpw7s" path="res://objects/power_shotgun.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://q1c5qdrgqg00" path="res://objects/power_machinegun.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://kfpugq0vck7r" path="res://objects/power_sniper.tscn" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://by8mqhb0f883y" path="res://objects/enemy.tscn" id="7_pkg7o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
 texture = ExtResource("2_fj7yv")
@@ -35,6 +36,7 @@ sources/0 = SubResource("TileSetAtlasSource_aqk2v")
 [node name="World" type="Node2D" unique_id=1736268332]
 
 [node name="Player" parent="." unique_id=410521718 instance=ExtResource("1_f3sb7")]
+position = Vector2(-452, 0)
 collision_mask = 9
 
 [node name="PlayerCam" type="Camera2D" parent="Player" unique_id=1605298055]
@@ -49,28 +51,22 @@ tile_set = SubResource("TileSet_036b0")
 script = ExtResource("3_tlwt5")
 
 [node name="Power_Shotgun" parent="." unique_id=1528076487 instance=ExtResource("4_aqk2v")]
-position = Vector2(-564, 321)
-
-[node name="Power_Machinegun" parent="." unique_id=1535838672 instance=ExtResource("5_036b0")]
-position = Vector2(-560, -320)
+position = Vector2(-526, -195)
 
 [node name="Power_Shotgun2" parent="." unique_id=243707986 instance=ExtResource("4_aqk2v")]
-position = Vector2(-360, 319)
-
-[node name="Power_Shotgun3" parent="." unique_id=1829369065 instance=ExtResource("4_aqk2v")]
-position = Vector2(-158, 325)
+position = Vector2(-535, -319)
 
 [node name="Power_Machinegun2" parent="." unique_id=145343098 instance=ExtResource("5_036b0")]
-position = Vector2(-366, -317)
+position = Vector2(-370, -328)
 
 [node name="Power_Machinegun3" parent="." unique_id=589055374 instance=ExtResource("5_036b0")]
-position = Vector2(-172, -319)
-
-[node name="Power_Sniper" parent="." unique_id=1285163443 instance=ExtResource("6_dwbse")]
-position = Vector2(-163, 4)
+position = Vector2(-369, -201)
 
 [node name="Power_Sniper2" parent="." unique_id=2137834668 instance=ExtResource("6_dwbse")]
-position = Vector2(-359, 9)
+position = Vector2(-226, -200)
 
 [node name="Power_Sniper3" parent="." unique_id=862381452 instance=ExtResource("6_dwbse")]
-position = Vector2(-557, 10)
+position = Vector2(-223, -320)
+
+[node name="Enemy" parent="." unique_id=1368799035 instance=ExtResource("7_pkg7o")]
+position = Vector2(132, 0)
